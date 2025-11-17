@@ -1,0 +1,70 @@
+#LoginWindow {
+    background-color: #E9EDF5; /* Fondo gris claro */
+}
+
+#card {
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+#title {
+    font-size: 26px;
+    font-weight: bold;
+    font-family: Segoe UI;
+    margin-bottom: 10px;
+    color: #334E68; /* Título en azul oscuro */
+}
+.QueryWindow {
+    background-color: #f9f9f9;
+}
+
+.QueryWindow QPushButton:focus {
+    outline: none;
+}
+
+QLabel#tab_dashboard_label {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6C757D;
+    padding: 5px 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+QLabel#label {
+    font-size: 16px;
+    font-family: Segoe UI;
+}
+
+QLineEdit {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #B0BEC5;
+    border-radius: 8px;
+    background: #F7FAFC;
+}
+
+QLineEdit:focus {
+    border-color: #334E68; /* Borde azul al enfocar */
+    background: white;
+}
+
+QPushButton#login_button {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    background-color: #334E68; /* Botón en azul oscuro */
+    color: white;
+    border: 1px solid #293F54;
+}
+
+QPushButton#login_button:hover {
+    background-color: #486581;
+}
+
+QPushButton#login_button:pressed {
+    background-color: #293F54;
+}
+QPushButton:focus {
+    outline: 0;
+}

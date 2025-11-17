@@ -1,0 +1,6 @@
+from .ClientQueryWindow import ClientQueryWindow
+from .ProductQueryWindow import ProductQueryWindow
+from .SaleQueryWindow import SaleQueryWindow
+from .ProveedorQueryWindow import ProveedorQueryWindow
+from .PromocionQueryWindow import PromocionQueryWindow
+from .TurnoQueryWindow import TurnoQueryWindow

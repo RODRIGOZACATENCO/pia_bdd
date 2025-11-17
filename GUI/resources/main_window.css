@@ -1,0 +1,183 @@
+#dashboard {
+    background-color: #334E68; /* Azul oscuro corporativo */
+    color: white;
+    padding: 10px;
+}
+QLabel#logo {
+    background-color: #486581;
+    color: #FFF;
+    font-weight: bold;
+    border: 1px solid #777;
+}
+QLabel#bar_title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+QLabel#stat_label {
+    font-size: 14px;
+    color: #EEE;
+}
+.QueryWindow {
+    background-color: #f9f9f9;
+}
+
+.QueryWindow QPushButton:focus {
+    outline: none;
+}
+
+QLabel#tab_dashboard_label {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6C757D;
+    padding: 5px 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+/* Estilo para botones de navegación en el dashboard */
+QPushButton#nav_button {
+    background: #E0E0E0;
+    border: 1px solid #C4C4C3;
+    border-bottom: none; /* Sin borde inferior para que parezca pestaña */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 8ex;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333; /* Color de texto más oscuro */
+}
+QPushButton#nav_button:hover {
+    background: white;
+    color: #000;
+}
+QPushButton#nav_button:pressed {
+    background: #F0F0F0;
+}
+
+
+QTabWidget::pane {
+    border-top: 2px solid #C2C7CB;
+}
+QTabBar::tab {
+    background: #E0E0E0;
+    border: 1px solid #C4C4C3;
+    border-bottom-color: #C2C7CB;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 8ex;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333; /* Color de texto más oscuro */
+}
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: white;
+    color: #000;
+}
+
+QScrollArea {
+    border: none;
+}
+QScrollBar:vertical {
+    width: 10px;
+    background: #ddd;
+    border-radius: 5px;
+}
+QScrollBar::handle {
+    background: #888;
+    border-radius: 5px;
+}
+#botones_mesa {
+    background-color: #f0f0f0;
+    padding: 5px;
+}
+#botones_mesa QPushButton {
+    background-color: #FFFFFF; /* Blanco para libre */
+    border: 2px solid #B0BEC5; /* Borde gris claro */
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Segoe UI";
+    color: #333; /* Texto oscuro */
+    min-height: 80px;
+    margin: 5px;
+}
+#botones_mesa QPushButton:hover {
+    background-color: #F7FAFC;
+    border-color: #334E68; /* Borde azul oscuro al pasar el ratón */
+}
+#botones_mesa QPushButton:pressed {
+    background-color: #E0E0E0;
+    border-color: #5A6268;
+}
+#botones_mesa QPushButton[ocupada="true"] {
+    background-color: #6C757D; /* Gris oscuro para ocupada */
+    border: 2px solid #5A6268;
+    color: #FFFFFF;
+}
+#botones_mesa QPushButton[ocupada="true"]:hover {
+    background-color: #5A6268;
+    border-color: #495057;
+}
+#botones_mesa QPushButton[ocupada="true"]:pressed {
+    background-color: #495057;
+    border-color: #343A40;
+}
+#botones_mesa QPushButton:focus {
+    outline: none;
+}
+
+QDateEdit {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #B0BEC5;
+    border-radius: 4px;
+}
+QTableWidget {
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+QHeaderView::section {
+    background-color: #f0f0f0;
+    padding: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: bold;
+}
+QFormLayout QLabel {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Estilo general de botones */
+QPushButton {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #334E68; /* Azul oscuro */
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #293F54; /* Borde más oscuro */
+}
+QPushButton:hover {
+    background-color: #486581; /* Azul más claro al pasar el ratón */
+}
+QPushButton:pressed {
+    background-color: #293F54;
+}
+
+/* Estilo para campos de entrada */
+QLineEdit, QSpinBox, QDoubleSpinBox, QDateEdit, QTimeEdit, QComboBox {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #B0BEC5; /* Borde gris */
+    border-radius: 4px;
+    background: #F7FAFC;
+}
+QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QDateEdit:focus, QTimeEdit:focus, QComboBox:focus {
+    border-color: #334E68; /* Borde azul al enfocar */
+    background: white;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
