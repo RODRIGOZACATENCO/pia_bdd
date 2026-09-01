@@ -1,93 +1,109 @@
-# PIA_BDD
+# BISONBAR - Bar Management System
 
+BISONBAR is a desktop Point of Sale (POS) and administration system designed for bar operations, inventory management, sales tracking, and staff management.
 
+## Functions
 
-## Getting started
+### Table and POS Management
+- Real-time floor plan visualization and table status tracking.
+- Client registration and assignment to active tables.
+- Order intake with itemized pricing and ticket generation.
+- Sale finalization with automatic table release.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Inventory and Purchase Management
+- Product catalog organized by brand and product type.
+- Automatic stock reduction during customer orders.
+- Purchase order processing with inventory restocking.
+- Supplier registration and contact directory.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### Promotions and Pricing Engine
+- Promotion creation with start and end date ranges.
+- Dynamic item pricing evaluation based on current date promotions.
 
-## Add your files
+### Human Resources and Staff Administration
+- Employee profiles linked to job positions and work shifts.
+- Shift scheduling with start time, end time, and employee quota.
+- Employee sales performance tracking.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+### System Access and Security
+- User authentication with credentials validation.
+- Role-based interface customization for Administrators, Servers, Cashiers, and Cooks.
+
+## Technical Features
+
+### Desktop GUI Architecture
+- Built with Python and PySide6 (Qt framework).
+- Multi-window interface using QStackedWidget and QTabWidget.
+- Modular layout split across sales, data input, queries, and administrative modules.
+- Custom QSS stylesheets for UI styling.
+- Asynchronous UI timer for live metrics and timestamp display.
+
+### Database Backend
+- Relational database schema hosted on MySQL.
+- Data access layer encapsulated in Python (BarDB class).
+- Explicit transaction management for multi-statement atomic database updates.
+
+### Security and Cryptography
+- Passwords hashed using PBKDF2 with HMAC-SHA256 and 100,000 iterations.
+- Unique 32-byte cryptographically secure salt generated per user account.
+- Constant-time hash comparison via hmac.compare_digest to prevent timing attacks.
+
+### Database Audit Logging (Triggers)
+- Automated event tracking triggers configured on PRODUCTO, EMPLEADO, CLIENTE, VENTA, ORDEN, and PROVEEDOR.
+- Operation tracking (INSERT, UPDATE, DELETE) logged to LOG_CAMBIOS table with timestamp, database user, and detailed field diffs.
+
+### Stored Procedures and Relational Views
+- Stored procedures for catalog queries, sales aggregation, and best-selling product analysis.
+- Database views encapsulating multi-table joins for product catalogs, staff lists, and employee revenue summaries.
+
+### Role-Based Access Control (RBAC)
+- Dynamic UI tab enabling and disabling based on employee position.
+- Server/Cashier role: restricted to POS and table management.
+- Cook role: restricted to product and query views.
+- Administrator role: full access to HR, user account creation, system configuration, and audit logs.
+
+## System Architecture
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/RODRIGOZACATENCO/pia_bdd.git
-git branch -M main
-git push -uf origin main
+pia_bdd/
+|-- CREACION_BASE_DATOS.sql
+|-- PROCEDURES.sql
+|-- TRIGGERS.sql
+|-- VISTAS.sql
+|-- DATOS_PRUEBA.sql
+|-- FULL_SQL.sql
+`-- GUI/
+    |-- app/
+    |   |-- MainApp.py
+    |   |-- bar_db.py
+    |   |-- auth_utils.py
+    |   `-- validation_utils.py
+    |-- resources/
+    `-- windows/
+        |-- administrative/
+        |-- data_input/
+        |-- queries/
+        `-- sales/
 ```
 
-## Integrate with your tools
+## Setup and Execution
 
-- [ ] [Set up project integrations](https://gitlab.com/RODRIGOZACATENCO/pia_bdd/-/settings/integrations)
+### Requirements
+- Python 3.8 or higher
+- MySQL Server 8.0 or higher
+- PySide6
+- mysql-connector-python
 
-## Collaborate with your team
+### Database Setup
+1. Execute `CREACION_BASE_DATOS.sql` to initialize database schema and tables.
+2. Execute `PROCEDURES.sql` to register stored procedures.
+3. Execute `TRIGGERS.sql` to configure audit log triggers.
+4. Execute `VISTAS.sql` to create database views.
+5. (Optional) Execute `DATOS_PRUEBA.sql` to populate initial test data.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+### Running the Application
+1. Configure MySQL connection parameters in `GUI/app/MainApp.py`.
+2. Run the main entry point:
+   ```bash
+   python GUI/app/MainApp.py
+   ```
